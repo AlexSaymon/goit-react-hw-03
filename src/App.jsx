@@ -18,7 +18,9 @@ function App() {
   }, [contacts]);
 
   const visibleContacts = contacts.filter(
-    ({ name, number }) => name.includes(searchData) || number.includes(searchData)
+    ({ name, number }) =>
+      name.toLowerCase().includes(searchData.toLowerCase()) ||
+      number.toLowerCase().includes(searchData.toLowerCase())
   );
 
   const handleAddContact = (values, options) => {
