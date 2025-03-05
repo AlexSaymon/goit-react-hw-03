@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { counterReducer } from "./counterSlice";
 import {
   persistStore,
   persistReducer,
@@ -10,27 +11,28 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { contactReducer } from "./contactsSlice";
-import { filterReducer } from "./filtersSlice";
+import { todoReducer } from "./todoSlice";
 
-const persistConfigContacts = {
-  key: "contactsPersistor",
+const persistConfig = {
+  key: "counterPersistor",
   version: 1,
   storage,
 };
-const persistConfigFilters = {
-  key: "filtersPersistor",
+const persistConfigTodos = {
+  key: "todos",
   version: 1,
   storage,
+  // whitelist: ['items', '', '', '',],
+  blacklist: ["filter"],
 };
 
-const persistedReducer = persistReducer(persistConfigContacts, contactReducer);
-const persistedReducerFilters = persistReducer(persistConfigFilters, filterReducer);
+const persistedReducer = persistReducer(persistConfig, counterReducer);
+const persistedReducerTodos = persistReducer(persistConfigTodos, todoReducer);
 
 export const store = configureStore({
   reducer: {
-    contact: persistedReducer,
-    filter: persistedReducerFilters,
+    counter: persistedReducer,
+    todos: persistedReducerTodos,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
