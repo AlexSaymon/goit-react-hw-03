@@ -6,9 +6,7 @@ import { selectFilters } from "../../redux/filtersSlice";
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
-
   const filters = useSelector(selectFilters);
-
   const filteredContacts = contacts.filter((item) =>
     item.name.toLowerCase().includes(filters.toLowerCase())
   );
@@ -17,7 +15,7 @@ const ContactList = () => {
     <div>
       <ul className={s.itemList}>
         {filteredContacts.map((contact) => (
-          <Contact key={contact.id} {...contact} handleDeleteContact />
+          <Contact key={contact.id} {...contact} />
         ))}
       </ul>
     </div>
