@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px;
+  border-bottom: 1px solid black;
+  margin-bottom: 50px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.headerList {
+  display: flex;
+  gap: 5px;
+  margin-right: 50px;
+}
+
+.user {
+  color: black;
+}

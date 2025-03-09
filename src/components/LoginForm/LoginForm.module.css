@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+input {
+  padding: 12px;
+}
+
+.form {
+  padding-top: 200px;
+  margin: 0 auto;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.button {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px;
+  width: 150px;
+  margin: 0 150px;
+}
