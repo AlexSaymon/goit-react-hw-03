@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import s from "./AuthNav.module.css";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,12 +11,21 @@ const buildLinkClass = ({ isActive }) => {
 const AuthNav = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  };
   return (
     <div>
       <NavLink className={buildLinkClass} to="/contactsPage">
         Home
       </NavLink>
-      {isLoggedIn && <button onClick={() => dispatch(logout())}>Logout</button>}
+      {isLoggedIn && <button onClick={handleLogout}>Logout</button>}
     </div>
   );
 };

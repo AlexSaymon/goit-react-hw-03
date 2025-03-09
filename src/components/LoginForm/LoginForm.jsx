@@ -15,7 +15,9 @@ const LoginForm = () => {
         toast(`Welcome ${res.user.name}`);
         navigate("/contactsPage");
       })
-      .catch(toast.error("Maybe something else?"));
+      .catch(() => {
+        toast.error("Maybe something else?");
+      });
   };
 
   const initialValues = {
